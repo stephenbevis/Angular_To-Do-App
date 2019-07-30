@@ -1,0 +1,49 @@
+<div class="body">
+    <div class="body_container">
+      <h1 class="todos_header">Current Tasks</h1>
+
+      <input class="add_task_button" type="button" value="Add Another Task">
+
+      <div *ngIf="loaded && todos?.length > 0" class="todos_container">
+        <div *ngFor="let todo of todos" class="todo_container" [style.background-color]="todo.complete ? '#edfdfd' : ''">
+          <div class="custom_checkbox">
+            <div *ngIf="todo.notComplete">
+              <i class="far fa-square unchecked"></i>
+            </div>
+
+            <div *ngIf="todo.complete" (click)="taskClick(todo)">
+              <i class="fas fa-check-square checked"></i>
+            </div>
+          </div>
+    
+          <div class="todo_content" (click)="taskClick(todo)">
+            <h3>{{todo.todoHeader}}</h3>
+            <p>{{todo.todoBody}}</p>
+          </div>
+
+          <div *ngIf="todo.notComplete" class="edit_button_container">
+            <input class="edit_button" type="button" value="Edit">
+          </div>
+
+          <div *ngIf="todo.complete" class="complete_button_container">
+            <input class="complete_button" type="button" value="Complete">
+          </div>
+        </div>
+      </div>
+
+
+      <div *ngIf="todos?.length == 0" class="no_todos">
+        <h1 class="noTasks">Add More Tasks!</h1>
+      </div>
+
+      <div *ngIf="!loaded" class="loading">
+        <h1 class="loading">Checking For Tasks...</h1>
+      </div>
+
+      <div class="complete_button_container">
+        <input type="button" class="complete_tasks_button" value="Complete Selected Tasks">
+      </div>
+
+    </div>
+  </div>
+  

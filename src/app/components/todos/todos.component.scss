@@ -1,0 +1,124 @@
+.body_container{
+  width:80%;
+  margin:0px auto;
+  box-shadow: 0px 1px 3px rgba(0,0,0,.12), 0px 1px 2px rgba(0,0,0,.24);
+  padding:30px;
+
+  .todo_container:last-child{
+    border-bottom:none;
+  }
+}
+
+.todos_header{
+  margin-bottom:30px;
+  text-align:center;
+}
+
+.add_task_button{
+  border:none;
+  padding:10px;
+  width:100%;
+  outline:none;
+  background:cyan;
+  font-weight:bold;
+  transition: background-color .2s;
+  margin-bottom:30px;
+
+  &:hover{
+    cursor: pointer;
+    background:lightcyan;
+  }
+}
+
+.todo_container{
+  display:grid;
+  grid-template-columns:50px 1fr 100px;
+  grid-gap:10px;
+  align-items:center;
+
+  text-align:left;
+  padding:20px 10px;
+  transition: background-color .3s;
+  user-select: none;
+  position: relative;
+  border-bottom:1px solid lightgray;
+
+  h3{
+    margin-bottom:10px;
+  }
+
+  .edit_button{
+    background:yellow;
+    display:block;
+    width:100%;
+    padding:15px;
+    border-radius:10px;
+    opacity:0;
+    text-align:center;
+    transition:opacity .2s;
+    border:none;
+    font-size:16px;
+    outline:none;
+
+    &:hover{
+      cursor: pointer;
+    }
+  }
+
+  .complete_button{
+    background:cyan;
+    display:block;
+    width:100%;
+    padding:15px;
+    border-radius:10px;
+    text-align:center;
+    transition:opacity .2s;
+    border:none;
+    font-size:16px;
+    outline:none;
+  }
+
+  &:hover{
+    cursor: pointer;
+    background:#edfdfd;
+
+    .edit_button{
+      opacity:1;
+    }
+  }
+
+  i{
+    padding-left:15px;
+  }
+}
+
+.todos_container{
+  margin-bottom:30px;
+}
+
+.complete_tasks_button{
+  border:none;
+  padding:10px;
+  width:100%;
+  outline:none;
+  background:cyan;
+  font-weight:bold;
+  transition: background-color .2s;
+
+  &:hover{
+    cursor: pointer;
+    background:lightcyan;
+  }
+}
+
+.noTasks,
+.loading{
+  color:lightgray;
+  text-align:center;
+  margin-bottom:30px;
+}
+
+.checked{
+  font-weight:bolder;
+  color:darkcyan;
+}
