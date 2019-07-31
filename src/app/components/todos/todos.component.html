@@ -2,7 +2,9 @@
     <div class="body_container">
       <h1 class="todos_header">Current Tasks</h1>
 
-      <input class="add_task_button" type="button" value="Add Another Task">
+      <input (click)="showTodoForm = !showTodoForm" class="add_task_button" type="button" value="Add Another Task">
+
+      <app-add-todo *ngIf="showTodoForm"></app-add-todo>
 
       <div *ngIf="loaded && todos?.length > 0" class="todos_container">
         <div *ngFor="let todo of todos" class="todo_container" [style.background-color]="todo.complete ? '#edfdfd' : ''">
@@ -26,7 +28,7 @@
           </div>
 
           <div *ngIf="todo.complete" class="complete_button_container">
-            <input class="complete_button" type="button" value="Complete">
+            <input class="complete_button" type="button" value="Selected">
           </div>
         </div>
       </div>

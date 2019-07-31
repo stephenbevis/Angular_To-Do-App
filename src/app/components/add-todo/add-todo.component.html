@@ -1,0 +1,15 @@
+<div class="add_todo_container">
+  <form (submit)="onSubmit($event)">
+    <div class="input_container">
+      <input [(ngModel)]="todo.todoHeader" class="todo_input" type="text" required="" autocomplete="off" name="title">
+      <label><i class="fas fa-user"></i> Title</label>
+    </div>
+
+    <div class="input_container">
+      <textarea [(ngModel)]="todo.todoBody" class="todo_input" name="description" id="description" required=""></textarea>
+      <label id="description_label"><i class="fas fa-comment"></i> Description</label>
+    </div>
+    
+    <input class="submit" type="submit" value="Add Task" (click)="addTodo()">
+  </form>
+</div>

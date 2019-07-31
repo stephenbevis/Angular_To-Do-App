@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import {TodoService} from '../../services/todo.service';
 import {Todo} from '../../models/Todo';
 
 @Component({
@@ -15,44 +15,45 @@ export class TodosComponent implements OnInit {
   complete: boolean = false;
   loaded: boolean = false;
   disabled: boolean = true;
+  showTodoForm: boolean = false;
 
-  constructor() { }
+  constructor(private todoService: TodoService) {
+
+  }
 
   ngOnInit() {
-
-    // Mimicking pulling tasks from a database
-
-    setTimeout(() => {
-      this.todos = [
-        {
-          id:'1',
-          todoHeader: "Make ToDo App",
-          todoBody: "Make a really cool todo app!",
-          notComplete: true,
-          complete: false
-        },
-        {
-          id:'2',
-          todoHeader: "Automate Todos",
-          todoBody: "Program javascript to allow user to write and update todos.",
-          notComplete: true,
-          complete: false
-        },
-        {
-          id:'3',
-          todoHeader: "Just A Third Todo",
-          todoBody: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Assumenda mollitia expedita aut sequi esse qui temporibus? Totam optio nesciunt accusamus labore voluptatem? Cum est asperiores, minima numquam veniam reiciendis maiores.",
-          notComplete: true,
-          complete: false
-        }
-      ];
-
-      this.loaded = true;
-    }, 1500);
+    this.todos = this.todoService.getTodos();
+    this.loaded = true;
+    console.log(this.todos);
   }
 
   taskClick = (todo: Todo) => {
     todo.notComplete = !todo.notComplete;
     todo.complete = !todo.complete;
+  }
+
+  focusAnimation = () => {
+    if(document.getElementById('description').innerHTML.length >= 0){
+      document.getElementById('description_label').style.top = "-23px";
+      document.getElementById('description_label').style.fontSize = "12px";
+      document.getElementById('description').style.height = "100px";
+      document.getElementById('description').style.outline = "none";
+      console.log(document.getElementById('description').innerHTML.length);
+    }
+  }
+
+  blurAnimation = () => {
+    if(document.getElementById('description').innerHTML.length == 0){
+      document.getElementById('description_label').style.top = "0px";
+      document.getElementById('description_label').style.fontSize = "16px";
+      document.getElementById('description').style.height = "47px";
+      console.log(document.getElementById('description').innerHTML.length);
+    } else {
+      document.getElementById('description_label').style.top = "-23px";
+      document.getElementById('description_label').style.fontSize = "12px";
+      document.getElementById('description').style.height = "100px";
+      document.getElementById('description').style.outline = "none";
+      console.log(document.getElementById('description').innerHTML.length);
+    }
   }
 }

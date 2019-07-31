@@ -1,0 +1,91 @@
+.add_todo_container{
+  margin-top:10px;
+  border-bottom:1px solid lightgray;
+}
+
+form{
+  width:60%;
+  margin:0px auto;
+  padding-bottom:60px;
+}
+
+label{
+  position:absolute;
+  top:0;
+  left:0;
+  padding:13px 0px;
+  transition:.3s;
+}
+
+input{
+  &:focus,
+  &:valid{
+    outline:none;
+  }
+
+  &:focus ~ label,
+  &:valid ~ label{
+    top:-23px;
+    left:0;
+    font-size:12px;
+  }
+}
+
+textarea{
+  padding:15px 0px;
+  width:100%;
+  height:47px;
+  border:none;
+  border-bottom:1px solid black;
+  background:transparent;
+  transition:.3s;
+  overflow: auto;
+
+  &:focus,
+  &:valid{
+    height:100px;
+    outline:none;
+  }
+
+  &:focus ~ label,
+  &:valid ~ label{
+    top:-23px;
+    left:0;
+    font-size:12px;
+  }
+}
+
+i{
+  padding-right:5px;
+}
+
+.input_container{
+  margin-bottom:30px;
+  position:relative;
+  text-align:left;
+
+  .todo_input{
+    width:100%;
+    padding:15px 0px;
+    border:none;
+    border-bottom:1px solid black;
+    background:transparent;
+  }
+}
+
+.submit{
+  border:none;
+  background:cyan;
+  margin-top:10px;
+  width:100%;
+  padding:10px;
+  margin-top:15px;
+  color:black;
+  font-weight:bold;
+  transition: background-color .3s;
+
+  &:hover{
+    background-color: lightcyan;
+    cursor: pointer;
+  }
+}
