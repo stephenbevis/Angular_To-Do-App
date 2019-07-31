@@ -1,15 +1,16 @@
 <div class="add_todo_container">
-  <form #todoForm="ngForm" (ngSubmit)="onSubmit(todoForm)">
+  <form>
 
     <div class="input_container">
       <input 
-        [(ngModel)]="todo.todoHeader" 
+        [(ngModel)]="currentTodo.todoHeader"
         class="todo_input" 
         type="text" 
         required
         autocomplete="off" 
         name="title"
         id="todoHeader"
+        #todoHeader
       >
 
       <label>
@@ -19,19 +20,23 @@
 
     <div class="input_container">
       <textarea 
-        [(ngModel)]="todo.todoBody" 
+        [(ngModel)]="currentTodo.todoBody"
         class="todo_input" 
         name="description" 
         id="description" 
-        required >
-      </textarea>
+        required 
+        #todoBody ></textarea>
 
       <label id="description_label">
         <i class="fas fa-comment"></i> Description
       </label>
     </div>
+
+    <input type="hidden" [(ngModel)]="currentTodo.id" name="id">
     
-    <input class="submit" type="submit" value="Add Task" (click)="addTodo()">
+    <input *ngIf="!isEdit" class="submit" type="submit" value="Add Task" (click)="addTodo(todoHeader.value, todoBody.value, complete=false, notComplete=true)">
+
+    <input *ngIf="isEdit" class="submit" type="submit" value="Update Task" (click)="updateTodo(todoHeader.value, todoBody.value, complete=false, notComplete=true)">
 
   </form>
 </div>

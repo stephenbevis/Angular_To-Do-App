@@ -4,7 +4,7 @@
 
       <input (click)="showTodoForm = !showTodoForm" class="add_task_button" type="button" value="Add Another Task">
 
-      <app-add-todo *ngIf="showTodoForm"></app-add-todo>
+      <app-add-todo *ngIf="showTodoForm" [currentTodo]="currentTodo" [isEdit]="isEdit" (newTodo)="onNewTodo($event)" (updatedTodo)="onUpdatedTodo($event)"></app-add-todo>
 
       <div *ngIf="loaded && todos?.length > 0" class="todos_container">
         <div *ngFor="let todo of todos" class="todo_container" [style.background-color]="todo.complete ? '#edfdfd' : ''">
@@ -24,11 +24,11 @@
           </div>
 
           <div *ngIf="todo.notComplete" class="edit_button_container">
-            <input class="edit_button" type="button" value="Edit">
+            <input (click)="editTodo(todo)" class="edit_button" type="button" value="Edit">
           </div>
 
           <div *ngIf="todo.complete" class="complete_button_container">
-            <input class="complete_button" type="button" value="Selected">
+            <input (click)="removeTodo(todo)" class="complete_button" type="button" value="Complete">
           </div>
         </div>
       </div>
