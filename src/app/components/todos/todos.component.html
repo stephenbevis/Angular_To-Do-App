@@ -2,7 +2,13 @@
     <div class="body_container">
       <h1 class="todos_header">Current Tasks</h1>
 
-      <input (click)="showTodoForm = !showTodoForm" class="add_task_button" type="button" value="Add Another Task">
+      <div *ngIf="showTodoForm == false">
+        <input (click)="showTodoForm = !showTodoForm" class="add_task_button" type="button" value="Add Another Task">
+      </div>
+
+      <div *ngIf="showTodoForm == true">
+        <input (click)="showTodoForm = !showTodoForm" class="add_task_button" type="button" value="Close Task Menu">
+      </div>
 
       <app-add-todo *ngIf="showTodoForm" [currentTodo]="currentTodo" [isEdit]="isEdit" (newTodo)="onNewTodo($event)" (updatedTodo)="onUpdatedTodo($event)"></app-add-todo>
 
@@ -24,7 +30,7 @@
           </div>
 
           <div *ngIf="todo.notComplete" class="edit_button_container">
-            <input (click)="editTodo(todo)" class="edit_button" type="button" value="Edit">
+            <input (click)="editTodo(todo)" class="edit_button" type="button" value="Update">
           </div>
 
           <div *ngIf="todo.complete" class="complete_button_container">
@@ -40,10 +46,6 @@
 
       <div *ngIf="!loaded" class="loading">
         <h1 class="loading">Checking For Tasks...</h1>
-      </div>
-
-      <div class="complete_button_container">
-        <input type="button" class="complete_tasks_button" value="Complete Selected Tasks">
       </div>
 
     </div>

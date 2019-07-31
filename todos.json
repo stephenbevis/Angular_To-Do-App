@@ -1,3 +1,25 @@
 {
-  "todos": []
+  "todos": [
+    {
+      "todoHeader": "Add Another Task!",
+      "todoBody": "Click on the Add Another Task button and add your own task.",
+      "complete": false,
+      "notComplete": true,
+      "id": 1
+    },
+    {
+      "todoHeader": "Complete A Tasks!",
+      "todoBody": "Complete this task by hovering over it and clicking. Click the Complete button to the right.",
+      "complete": false,
+      "notComplete": true,
+      "id": 2
+    },
+    {
+      "todoHeader": "Edit Me!",
+      "todoBody": "Edit this task by hovering over it and clicking the Edit button to the right!",
+      "complete": false,
+      "notComplete": true,
+      "id": 3
+    }
+  ]
 }

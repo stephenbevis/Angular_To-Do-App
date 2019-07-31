@@ -1,5 +1,5 @@
 export interface Todo{
-  id?:Number,
+  id?:number,
   todoHeader: String,
   todoBody: String,
   notComplete: Boolean,

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TodoService } from '../../services/todo.service';
 import { Todo } from '../../models/Todo';
-import { currentId } from 'async_hooks';
+// import { currentId } from 'async_hooks';
 
 @Component({
   selector: 'app-todos',
@@ -38,11 +38,20 @@ export class TodosComponent implements OnInit {
 
   onNewTodo(todo: Todo){
     this.todos.unshift(todo);
+    this.currentTodo = {
+      id:0,
+      todoHeader: '',
+      todoBody: '',
+      notComplete: true,
+      complete: false
+    }
+    this.showTodoForm = false;
   }
 
   editTodo(todo: Todo){
     this.currentTodo = todo;
     this.isEdit = true;
+    this.showTodoForm = true;
   }
 
   onUpdatedTodo(todo: Todo){
@@ -58,6 +67,7 @@ export class TodosComponent implements OnInit {
           notComplete: true,
           complete: false
         }
+        this.showTodoForm = false;
       }
     });
   }
