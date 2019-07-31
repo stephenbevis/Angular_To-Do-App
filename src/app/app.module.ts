@@ -11,6 +11,8 @@ import { TodosComponent } from './components/todos/todos.component';
 import {TodoService} from './services/todo.service';
 import { AddTodoComponent } from './components/add-todo/add-todo.component';
 
+import {HttpClientModule} from '@angular/common/http';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,7 +23,8 @@ import { AddTodoComponent } from './components/add-todo/add-todo.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [
     TodoService

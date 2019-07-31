@@ -21,7 +21,10 @@ export class AddTodoComponent implements OnInit {
   constructor(private todoService: TodoService) { }
 
   ngOnInit() {
-    this.todos = this.todoService.getTodos();
+    this.todoService.getTodos().subscribe(todos => {
+      this.todos = todos;
+      console.log(this.todos);
+    });
   }
 
   onSubmit = (e) => {
@@ -29,14 +32,16 @@ export class AddTodoComponent implements OnInit {
   }
 
   addTodo = () => {
-    this.todos.unshift(this.todo);
-    
-    this.todo = {
-      id:'',
-      todoHeader: '',
-      todoBody:'',
-      notComplete: true,
-      complete: false
+    if(this.todo.todoHeader != "" && this.todo.todoBody != ""){
+      this.todos.unshift(this.todo);
+
+      this.todo = {
+        id:'',
+        todoHeader: '',
+        todoBody:'',
+        notComplete: true,
+        complete: false
+      }
     }
   }
 }
